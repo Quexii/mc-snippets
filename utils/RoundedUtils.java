@@ -16,23 +16,23 @@ public class RoundedUtils {
     final static FontRenderer fr = mc.fontRendererObj;
     
     public static void enableGL2D() {
-        glDisable(2929);
-        glEnable(3042);
-        glDisable(3553);
-        glBlendFunc(770, 771);
+        glDisable(GL_DEPTH_TEST);
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glDepthMask(true);
-        glEnable(2848);
-        glHint(3154, 4354);
-        glHint(3155, 4354);
+        glEnable(GL_LINE_SMOOTH);
+        glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+        glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
     }
 
     public static void disableGL2D() {
-        glEnable(3553);
-        glDisable(3042);
-        glEnable(2929);
-        glDisable(2848);
-        glHint(3154, 4352);
-        glHint(3155, 4352);
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glEnable(GL_DEPTH_TEST);
+        glDisable(GL_LINE_SMOOTH);
+        glHint(GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
+        glHint(GL_POLYGON_SMOOTH_HINT, GL_DONT_CARE);
     }
     /* 
      * 
@@ -56,11 +56,11 @@ public class RoundedUtils {
         y *= 2.0D;
         x1 *= 2.0D;
         y1 *= 2.0D;
-        glEnable(3042);
-        glDisable(3553);
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
         glEnable(GL_LINE_SMOOTH);
         setColor(color);
-        glEnable(2848);
+        glEnable(GL_LINE_SMOOTH);
         glBegin(GL_POLYGON);
         int i;
         for (i = 0; i <= 90; i += 3)
@@ -82,11 +82,11 @@ public class RoundedUtils {
         for (i = 90; i <= 180; i += 3)
           glVertex2d(x1 - radius + Math.sin(i * Math.PI / 180.0D) * radius, y + radius + Math.cos(i * Math.PI / 180.0D) * radius); 
         glEnd();
-        glEnable(3553);
-        glDisable(3042);
-        glDisable(2848);
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
         glDisable(GL_LINE_SMOOTH);
-        glEnable(3553);
+        glDisable(GL_LINE_SMOOTH);
+        glEnable(GL_TEXTURE_2D);
         glScaled(2.0D, 2.0D, 2.0D);
         glPopAttrib();
         glLineWidth(1);
@@ -99,11 +99,11 @@ public class RoundedUtils {
         y *= 2.0D;
         x1 *= 2.0D;
         y1 *= 2.0D;
-        glEnable(3042);
-        glDisable(3553);
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
         glEnable(GL_LINE_SMOOTH);
         setColor(color);
-        glEnable(2848);
+        glEnable(GL_LINE_SMOOTH);
         glBegin(GL_POLYGON);
         int i;
         for (i = 0; i <= 90; i += 3)
@@ -115,13 +115,13 @@ public class RoundedUtils {
         for (i = 90; i <= 180; i += 3)
           glVertex2d(x1 - radius + Math.sin(i * Math.PI / 180.0D) * radius, y + radius + Math.cos(i * Math.PI / 180.0D) * radius); 
         glEnd();
-        glEnable(3553);
-        glDisable(3042);
-        glDisable(2848);
-        glDisable(3042);
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDisable(GL_LINE_SMOOTH);
+        glDisable(GL_BLEND);
         glDisable(GL_LINE_SMOOTH);
         glScaled(2.0D, 2.0D, 2.0D);
-        glEnable(3042);
+        glEnable(GL_BLEND);
         glPopAttrib();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
       }
@@ -142,10 +142,10 @@ public class RoundedUtils {
         y *= 2.0D;
         x1 *= 2.0D;
         y1 *= 2.0D;
-        glEnable(3042);
-        glDisable(3553);
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
         setColor(color);
-        glEnable(2848);
+        glEnable(GL_LINE_SMOOTH);
         glLineWidth(lineWidth);
         glBegin(GL_LINE_LOOP);
         int i;
@@ -158,11 +158,11 @@ public class RoundedUtils {
         for (i = 90; i <= 180; i += 3)
           glVertex2d(x1 - radius + Math.sin(i * Math.PI / 180.0D) * radius, y + radius + Math.cos(i * Math.PI / 180.0D) * radius); 
         glEnd();
-        glEnable(3553);
-        glDisable(3042);
-        glDisable(2848);
-        glDisable(3042);
-        glEnable(3553);
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDisable(GL_LINE_SMOOTH);
+        glDisable(GL_BLEND);
+        glEnable(GL_TEXTURE_2D);
         glScaled(2.0D, 2.0D, 2.0D);
         glPopAttrib();
         glLineWidth(1);
@@ -194,10 +194,10 @@ public class RoundedUtils {
         y *= 2.0D;
         x1 *= 2.0D;
         y1 *= 2.0D;
-        glEnable(3042);
-        glDisable(3553);
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
         setColor(color);
-        glEnable(2848);
+        glEnable(GL_LINE_SMOOTH);
         glBegin(9);
         int i;
         for (i = 0; i <= 90; i += 3)
@@ -209,11 +209,11 @@ public class RoundedUtils {
         for (i = 90; i <= 180; i += 3)
           glVertex2d(x1 - radius4 + Math.sin(i * Math.PI / 180.0D) * radius4, y + radius4 + Math.cos(i * Math.PI / 180.0D) * radius4); 
         glEnd();
-        glEnable(3553);
-        glDisable(3042);
-        glDisable(2848);
-        glDisable(3042);
-        glEnable(3553);
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDisable(GL_LINE_SMOOTH);
+        glDisable(GL_BLEND);
+        glEnable(GL_TEXTURE_2D);
         glScaled(2.0D, 2.0D, 2.0D);
         glPopAttrib();
         glLineWidth(1);
@@ -240,10 +240,10 @@ public class RoundedUtils {
         y *= 2.0D;
         x1 *= 2.0D;
         y1 *= 2.0D;
-        glEnable(3042);
-        glDisable(3553);
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
         setColor(color);
-        glEnable(2848);
+        glEnable(GL_LINE_SMOOTH);
         glLineWidth(lineWidth);
         glBegin(GL_LINE_LOOP);
         int i;
@@ -256,11 +256,11 @@ public class RoundedUtils {
         for (i = 90; i <= 180; i += 3)
           glVertex2d(x1 - radius4 + Math.sin(i * Math.PI / 180.0D) * radius4, y + radius4 + Math.cos(i * Math.PI / 180.0D) * radius4); 
         glEnd();
-        glEnable(3553);
-        glDisable(3042);
-        glDisable(2848);
-        glDisable(3042);
-        glEnable(3553);
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDisable(GL_LINE_SMOOTH);
+        glDisable(GL_BLEND);
+        glEnable(GL_TEXTURE_2D);
         glScaled(2.0D, 2.0D, 2.0D);
         glPopAttrib();
         glLineWidth(1);
@@ -293,11 +293,11 @@ public class RoundedUtils {
        */
       public static void drawRoundedGradientRectCorner(float x, float y, float x1, float y1, float radius, int color, int color2, int color3, int color4) {
     	  setColor(-1);
-          glEnable(3042);
-          glDisable(3553);
-          glBlendFunc(770, 771);
-          glEnable(2848);
-          glShadeModel(7425);
+          glEnable(GL_BLEND);
+          glDisable(GL_TEXTURE_2D);
+          glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+          glEnable(GL_LINE_SMOOTH);
+          glShadeModel(GL_SMOOTH);
           
           glPushAttrib(0);
           glScaled(0.5D, 0.5D, 0.5D);
@@ -305,11 +305,11 @@ public class RoundedUtils {
           y *= 2.0D;
           x1 *= 2.0D;
           y1 *= 2.0D;
-          glEnable(3042);
-          glDisable(3553);
+          glEnable(GL_BLEND);
+          glDisable(GL_TEXTURE_2D);
           setColor(color);
-          glEnable(2848);
-          glShadeModel(7425);
+          glEnable(GL_LINE_SMOOTH);
+          glShadeModel(GL_SMOOTH);
           glBegin(9);
           int i;
           for (i = 0; i <= 90; i += 3)
@@ -324,19 +324,19 @@ public class RoundedUtils {
           for (i = 90; i <= 180; i += 3)
             glVertex2d(x1 - radius + Math.sin(i * Math.PI / 180.0D) * radius, y + radius + Math.cos(i * Math.PI / 180.0D) * radius); 
           glEnd();
-          glEnable(3553);
-          glDisable(3042);
-          glDisable(2848);
-          glDisable(3042);
-          glEnable(3553);
+          glEnable(GL_TEXTURE_2D);
+          glDisable(GL_BLEND);
+          glDisable(GL_LINE_SMOOTH);
+          glDisable(GL_BLEND);
+          glEnable(GL_TEXTURE_2D);
           glScaled(2.0D, 2.0D, 2.0D);
           glPopAttrib();
           
 
-          glEnable(3553);
-          glDisable(3042);
-          glDisable(2848);
-          glShadeModel(7424);
+          glEnable(GL_TEXTURE_2D);
+          glDisable(GL_BLEND);
+          glDisable(GL_LINE_SMOOTH);
+          glShadeModel(GL_FLAT);
           setColor(-1);
         }
       
@@ -355,11 +355,11 @@ public class RoundedUtils {
        */
       public static void drawRoundedGradientOutlineCorner(float x, float y, float x1, float y1, float width, float radius, int color, int color2, int color3, int color4) {
     	  setColor(-1);
-          glEnable(3042);
-          glDisable(3553);
-          glBlendFunc(770, 771);
-          glEnable(2848);
-          glShadeModel(7425);
+          glEnable(GL_BLEND);
+          glDisable(GL_TEXTURE_2D);
+          glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+          glEnable(GL_LINE_SMOOTH);
+          glShadeModel(GL_SMOOTH);
           
           glPushAttrib(0);
           glScaled(0.5D, 0.5D, 0.5D);
@@ -367,11 +367,11 @@ public class RoundedUtils {
           y *= 2.0D;
           x1 *= 2.0D;
           y1 *= 2.0D;
-          glEnable(3042);
-          glDisable(3553);
+          glEnable(GL_BLEND);
+          glDisable(GL_TEXTURE_2D);
           setColor(color);
-          glEnable(2848);
-          glShadeModel(7425);
+          glEnable(GL_LINE_SMOOTH);
+          glShadeModel(GL_SMOOTH);
           glLineWidth(width);
           glBegin(GL_LINE_LOOP);
           int i;
@@ -388,19 +388,19 @@ public class RoundedUtils {
             glVertex2d(x1 - radius + Math.sin(i * Math.PI / 180.0D) * radius, y + radius + Math.cos(i * Math.PI / 180.0D) * radius); 
           glEnd();
           glLineWidth(1);
-          glEnable(3553);
-          glDisable(3042);
-          glDisable(2848);
-          glDisable(3042);
-          glEnable(3553);
+          glEnable(GL_TEXTURE_2D);
+          glDisable(GL_BLEND);
+          glDisable(GL_LINE_SMOOTH);
+          glDisable(GL_BLEND);
+          glEnable(GL_TEXTURE_2D);
           glScaled(2.0D, 2.0D, 2.0D);
           glPopAttrib();
           
 
-          glEnable(3553);
-          glDisable(3042);
-          glDisable(2848);
-          glShadeModel(7424);
+          glEnable(GL_TEXTURE_2D);
+          glDisable(GL_BLEND);
+          glDisable(GL_LINE_SMOOTH);
+          glShadeModel(GL_FLAT);
           setColor(-1);
         }
 }
